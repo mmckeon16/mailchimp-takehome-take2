@@ -6,10 +6,8 @@
 
 const fs = require("fs");
 
-const regexH1 = /^#\s[\s\S]*/;
-const regexH1Content = /(?<=#\s)[\s\S]*/;
-const regexH2 = /^##\s[\s\S]*/;
-const regexH2Content = /(?<=##\s)[\s\S]*/;
+const regexHeader = /#+/;
+const headerMatch = /(?<=#*\s)[\s\S]*/;
 const regexP = /.*/;
 const regexEmpty = /./;
 const regexLink = /\[[\s\S]*\]\([\s\S]*\)/;
@@ -24,8 +22,6 @@ fs.readFile("./test.md", "utf8", (err, data) => {
   const splitDataArray = data.split("\n");
   let html = "";
 
-  // logically there are headings, newlines, or paragraphs on each item. but within those lines, there can be a link - link should be searched first
-
   for (let i = 0; i < splitDataArray.length; i++) {
     let currentLine = splitDataArray[i];
 
@@ -37,12 +33,16 @@ fs.readFile("./test.md", "utf8", (err, data) => {
       currentLine = currentLine.replace(regexLink, htmlLink);
     }
 
-    if (currentLine.match(regexH2)) {
-      const h2Content = currentLine.match(regexH2Content);
-      html = html + `<h2>${h2Content}</h2>\n`;
-    } else if (currentLine.match(regexH1)) {
-      const h1Content = currentLine.match(regexH1Content);
-      html = html + `<h1>${h1Content}</h1>\n`;
+    const headerCount = currentLine.match(regexHeader);
+    if (headerCount) {
+      const tagSize = headerCount[0].length;
+      if (0 < tagSize < 7) {
+        // then a valid header tag
+        const headerContent = currentLine.match(headerMatch);
+        html = html + `<h${tagSize}>${headerContent}</h${tagSize}>\n`;
+      } else {
+        // not a valid header, needs to be a p
+      }
     } else if (currentLine.match(regexEmpty) === null) {
       continue;
     } else if (currentLine.match(regexP)) {
