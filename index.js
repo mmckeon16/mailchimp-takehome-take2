@@ -36,12 +36,14 @@ fs.readFile("./test.md", "utf8", (err, data) => {
     const headerCount = currentLine.match(regexHeader);
     if (headerCount) {
       const tagSize = headerCount[0].length;
-      if (0 < tagSize < 7) {
+      // console.log(tagSize);
+      if (tagSize < 7) {
         // then a valid header tag
         const headerContent = currentLine.match(headerMatch);
         html = html + `<h${tagSize}>${headerContent}</h${tagSize}>\n`;
       } else {
         // not a valid header, needs to be a p
+        html = html + `<p>${currentLine}</p>\n`;
       }
     } else if (currentLine.match(regexEmpty) === null) {
       continue;
@@ -51,17 +53,11 @@ fs.readFile("./test.md", "utf8", (err, data) => {
   }
 
   // write once to index.html
-  fs.writeFile(
-    "./index.html",
-    html,
-    // flag to add to end of file
-    // { flag: "a+" },
-    err => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      //file written successfully
+  fs.writeFile("./index.html", html, err => {
+    if (err) {
+      console.error(err);
+      return;
     }
-  );
+    //file written successfully
+  });
 });
