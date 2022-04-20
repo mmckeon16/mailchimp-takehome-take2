@@ -12,7 +12,7 @@ const regexH2 = /^##\s[\s\S]*/;
 const regexH2Content = /(?<=##\s)[\s\S]*/;
 const regexP = /.*/;
 const regexEmpty = /./;
-const regexLink = /[[\s\S]*]([\s\S]*)/;
+const regexLink = /\[[\s\S]*\]\([\s\S]*\)/;
 const linkMatch = /\(([^\)]+)\)/;
 const linkTextMatch = /\[([^\)]+)\]/;
 
@@ -24,23 +24,29 @@ fs.readFile("./test.md", "utf8", (err, data) => {
   const splitDataArray = data.split("\n");
   let html = "";
 
-  console.log(splitDataArray[0].match(linkTextMatch));
+  // logically there are headings, newlines, or paragraphs on each item. but within those lines, there can be a link - link should be searched first
 
   for (let i = 0; i < splitDataArray.length; i++) {
-    if (splitDataArray[i].match(regexH2)) {
-      const h2Content = splitDataArray[i].match(regexH2Content);
-      html = html + `<h2>${h2Content}</h2>\n`;
-    } else if (splitDataArray[i].match(regexH1)) {
-      const h1Content = splitDataArray[i].match(regexH1Content);
-      html = html + `<h1>${h1Content}</h1>\n`;
-    } else if (splitDataArray[i].match(regexEmpty) === null) {
-      continue;
-    } else if (splitDataArray[i].match(regexLink)) {
+    let currentLine = splitDataArray[i];
+
+    if (currentLine.match(regexLink)) {
       const link = splitDataArray[i].match(linkMatch);
       const linkText = splitDataArray[i].match(linkTextMatch);
-      html = html + `<a href="${link[1]}">${linkText[1]}</a>\n`;
-    } else if (splitDataArray[i].match(regexP)) {
-      html = html + `<p>${splitDataArray[i]}</p>\n`;
+
+      const htmlLink = `<a href="${link[1]}">${linkText[1]}</a>`;
+      currentLine = currentLine.replace(regexLink, htmlLink);
+    }
+
+    if (currentLine.match(regexH2)) {
+      const h2Content = currentLine.match(regexH2Content);
+      html = html + `<h2>${h2Content}</h2>\n`;
+    } else if (currentLine.match(regexH1)) {
+      const h1Content = currentLine.match(regexH1Content);
+      html = html + `<h1>${h1Content}</h1>\n`;
+    } else if (currentLine.match(regexEmpty) === null) {
+      continue;
+    } else if (currentLine.match(regexP)) {
+      html = html + `<p>${currentLine}</p>\n`;
     }
   }
 
