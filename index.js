@@ -7,28 +7,46 @@
 const fs = require("fs");
 
 const regexH1 = /#\s[\s\S]*/;
+const regexH1Content = /(?<=#\s)[\s\S]*/;
+const regexH2 = /##\s[\s\S]*/;
+const regexH2Content = /(?<=##\s)[\s\S]*/;
 
-fs.readFile("./requirements.md", "utf8", (err, data) => {
+fs.readFile("./test.md", "utf8", (err, data) => {
   if (err) {
     console.error(err);
     return;
   }
-  //   console.log(data);
   const splitDataArray = data.split("\n");
-  // console.log(splitDataArray[0]);
 
-  const found = splitDataArray[0].match(regexH1);
-  console.log(found);
-
-  const split = splitDataArray[0].match(/(?<=#\s)[\s\S]*/);
-
-  if (found) {
-    fs.writeFile("./index.html", `<h1>${split}</h1>`, err => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      //file written successfully
-    });
+  for (let i = 0; i < splitDataArray.length; i++) {
+    if (splitDataArray[i].match(regexH2)) {
+      const h2Content = splitDataArray[i].match(regexH2Content);
+      fs.writeFile(
+        "./index.html",
+        `<h2>${h2Content}</h2>\n`,
+        { flag: "a+" },
+        err => {
+          if (err) {
+            console.error(err);
+            return;
+          }
+          //file written successfully
+        }
+      );
+    } else if (splitDataArray[i].match(regexH1)) {
+      const h1Content = splitDataArray[i].match(regexH1Content);
+      fs.writeFile(
+        "./index.html",
+        `<h1>${h1Content}</h1>\n`,
+        { flag: "a+" },
+        err => {
+          if (err) {
+            console.error(err);
+            return;
+          }
+          //file written successfully
+        }
+      );
+    }
   }
 });
