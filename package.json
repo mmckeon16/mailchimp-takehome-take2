@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/mmckeon16/mailchimp-takehome-take2/issues"
   },
-  "homepage": "https://github.com/mmckeon16/mailchimp-takehome-take2#readme"
+  "homepage": "https://github.com/mmckeon16/mailchimp-takehome-take2#readme",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
 }

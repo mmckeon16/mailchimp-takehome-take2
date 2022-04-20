@@ -12,6 +12,18 @@ nvm use
 npm install
 ```
 
+## Run the parser
+
+```
+npm run parse
+```
+
+## Run the tests
+
+```
+npm test
+```
+
 ## Edge cases to test
 
 - should be allowed to have spaces before the front of the line (headings will not work with this rn)

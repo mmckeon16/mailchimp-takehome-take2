@@ -1,8 +1,69 @@
 <h1>Implement a Markdown => HTML converter</h1>
-<p>Markdown is a simple syntax used to generate formatted text. It&#39;s used in lots of places, but the one most developers have probably encountered is README files in github.</p>
-<p>For this exercise, we&#39;d like you to write a program which converts a small subset of markdown to HTML. You can implement this as a command-line program or as a web application, whatever you&#39;re more comfortable with.</p>
-<h2><a href="test.com">Formatting Specifics</a></h2>
-<p>hello there im here to test this <a href="match.com">test</a> feature</p>
-<p>More test info</p>
-<h6>should be h6</h6>
-<p>######## should <a href="abc.com">be p</a> tag</p>
+<p>Markdown is a simple syntax used to generate formatted text. It&#39;s used in lots</p>
+<p>of places, but the one most developers have probably encountered is README</p>
+<p>files in github.</p>
+<p>For this exercise, we&#39;d like you to write a program which converts a small</p>
+<p>subset of markdown to HTML. You can implement this as a command-line program</p>
+<p>or as a web application, whatever you&#39;re more comfortable with.</p>
+<h2>Some tests</h2>
+<p>Here are a few sample inputs. Your code should, of course, work with</p>
+<p>any input that uses the formatting rules above, but you can use this</p>
+<p>sample to get started testing.</p>
+<p>```</p>
+<h1>Sample Document</h1>
+<p>Hello!</p>
+<p>This is sample markdown for the <a href="https://www.mailchimp.com">Mailchimp</a> homework assignment.</p>
+<p>```</p>
+<p>We would expect this to convert to the following HTML:</p>
+<p>```</p>
+<p><h1>Sample Document</h1></p>
+<p><p>Hello</p></p>
+<p><p>This is sample markdown for the <a href="https://www.mailchimp.com">Mailchimp</a> homework assignment</p></p>
+<p>```</p>
+<p>Similarly, this sample:</p>
+<p>```</p>
+<h1>Header one</h1>
+<p>Hello there</p>
+<p>How are you?</p>
+<p>What&#39;s going on?</p>
+<h2>Another Header</h2>
+<p>This is a paragraph <a href="http://google.com">with an inline link</a>. Neat, eh?</p>
+<h2>This is a header <a href="http://yahoo.com">with a link</a></h2>
+<p>```</p>
+<p>Would convert to the following HTML:</p>
+<p>```</p>
+<p><h1>Header one</h1></p>
+<p><p>Hello there</p></p>
+<p><p>How are you?</p>
+<p>What&#39;s going on?</p></p>
+<p><h2>Another Header</h2></p>
+<p><p>This is a paragraph <a href="http://google.com">with an inline link</a>. Neat, eh?</p></p>
+<p><h2>This is a header <a href="http://yahoo.com">with a link</a></h2></p>
+<p>```</p>
+<p>(Please note that newlines don&#39;t matter in HTML, so if your version has extraneous newlines that don&#39;t effect the overall output when rendered, that&#39;s OK.)</p>
+<p>Please feel free to use libraries to generate HTML or otherwise make your life</p>
+<p>easier. However, please don&#39;t use a library that actually implements markdown</p>
+<p>to HTML conversion for you! We recognize that this problem is, by its nature,</p>
+<p>artificial, and that just finding a well-supported library would be the</p>
+<p>preferred real-world solution to this question.</p>
+<h2>What We&#39;re Looking For</h2>
+<p>We&#39;ll evaluate your assignment by looking for a few things:</p>
+<p>- Functionality</p>
+<p>  - Does the code do what it should?</p>
+<p>  - Does it handle edge cases?</p>
+<p>- Code quality</p>
+<p>  - Is the code readable & maintainable?</p>
+<p>  - Is there reasonable test coverage?</p>
+<p>- Performance</p>
+<p>  - Does the code balance reasonably fast execution with readability?</p>
+<p>  - Can the implementation handle large inputs gracefully?</p>
+<p>- Pragmatism</p>
+<p>  - Are the above factors balanced well against the limited time to implement the solution?</p>
+<h2>Timeline</h2>
+<p>We&#39;ve estimated that this question should typically take 4 hours or less.</p>
+<p>Please try not to go significantly above that, as we want to be mindful of</p>
+<p>your time and other life commitments!</p>
+<h2>Submission</h2>
+<p>Please zip your entire exercise directory and send it back to us via email.</p>
+<p>Feel free, but not required, to create a Git repository for your work, just</p>
+<p>remember to include your .git directory in your zip if you do!</p>
