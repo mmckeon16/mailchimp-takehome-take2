@@ -18,6 +18,8 @@ npm install
 npm run parse
 ```
 
+This will parse the `test.md` file in the home directory of this project. The output is in `output/index.html` and is being served on `localhost:3000` if you would like to look at the html in the browser
+
 ## Run the tests
 
 ```

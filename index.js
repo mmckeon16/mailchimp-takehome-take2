@@ -11,7 +11,6 @@ fs.readFile("./test.md", "utf8", async (err, data) => {
 
   const html = generateHTML(data);
 
-  // write once to index.html
   await fs.writeFile("./output/index.html", html, err => {
     if (err) {
       console.error(err);
