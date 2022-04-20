@@ -1,17 +1,17 @@
 # Implement a Markdown => HTML converter
 
-Markdown is a simple syntax used to generate formatted text. It’s used in lots
+Markdown is a simple syntax used to generate formatted text. It's used in lots
 of places, but the one most developers have probably encountered is README
 files in github.
 
-For this exercise, we’d like you to write a program which converts a small
+For this exercise, we'd like you to write a program which converts a small
 subset of markdown to HTML. You can implement this as a command-line program
-or as a web application, whatever you’re more comfortable with.
+or as a web application, whatever you're more comfortable with.
 
 ## Formatting Specifics
 
-Markdown is a fairly rich specification; for this assignment, we’re only
-looking for a small subset. This is the formatting we’d like you to implement:
+Markdown is a fairly rich specification; for this assignment, we're only
+looking for a small subset. This is the formatting we'd like you to implement:
 
 | Markdown                               | HTML                                              |
 | -------------------------------------- | ------------------------------------------------- |
@@ -84,14 +84,14 @@ What's going on?</p>
 (Please note that newlines don't matter in HTML, so if your version has extraneous newlines that don't effect the overall output when rendered, that's OK.)
 
 Please feel free to use libraries to generate HTML or otherwise make your life
-easier. However, please don’t use a library that actually implements markdown
+easier. However, please don't use a library that actually implements markdown
 to HTML conversion for you! We recognize that this problem is, by its nature,
 artificial, and that just finding a well-supported library would be the
 preferred real-world solution to this question.
 
-## What We’re Looking For
+## What We're Looking For
 
-We’ll evaluate your assignment by looking for a few things:
+We'll evaluate your assignment by looking for a few things:
 
 - Functionality
   - Does the code do what it should?

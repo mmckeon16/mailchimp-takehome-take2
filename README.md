@@ -19,3 +19,4 @@ npm install
 - should have links in the middle of paragraphs
 - spaces in front of headers (stretch)
 - Having a `#` in the middle of a header line
+- single quotes must be replaced with `&#39;`. There are probably other characters for this to cover. Since the requirements dont mention this, I will only be replacing the single quote
