@@ -29,5 +29,6 @@ npm test
 - ~~handle linked headers~~
 - ~~should have links in the middle of paragraphs~~
 - spaces in front of headers (stretch)
+- would be good to have a browser test
 - ~~Having a `#` in the middle of a header line~~
 - ~~single quotes must be replaced with `&#39;`. There are probably other characters for this to cover. Since the requirements dont mention this, I will only be replacing the single quote~~

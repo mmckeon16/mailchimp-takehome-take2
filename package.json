@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/mmckeon16/mailchimp-takehome-take2#readme",
   "devDependencies": {
-    "jest": "^27.5.1"
+    "jest": "^27.5.1",
+    "supertest": "^6.2.2"
   }
 }

@@ -1,4 +1,4 @@
-const generateHTML = require("./generateHTML");
+const generateHTML = require("../scripts/generateHTML");
 
 describe("html generation", () => {
   test("simple mailchimp example", () => {

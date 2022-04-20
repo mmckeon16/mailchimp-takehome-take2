@@ -1,7 +1,7 @@
 const fs = require("fs");
-const http = require("http");
 
 const generateHTML = require("./scripts/generateHTML");
+const createServer = require("./scripts/server");
 
 fs.readFile("./test.md", "utf8", async (err, data) => {
   if (err) {
@@ -12,7 +12,7 @@ fs.readFile("./test.md", "utf8", async (err, data) => {
   const html = generateHTML(data);
 
   // write once to index.html
-  await fs.writeFile("./index.html", html, err => {
+  await fs.writeFile("./output/index.html", html, err => {
     if (err) {
       console.error(err);
       return;
@@ -20,10 +20,7 @@ fs.readFile("./test.md", "utf8", async (err, data) => {
     //file written successfully
   });
 
-  const server = http.createServer((req, res) => {
-    res.writeHead(200, { "content-type": "text/html" });
-    fs.createReadStream("index.html").pipe(res);
-  });
+  const server = createServer();
 
   server.listen(process.env.PORT || 3000);
 });
