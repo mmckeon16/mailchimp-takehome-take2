@@ -12,6 +12,9 @@ const regexH2 = /^##\s[\s\S]*/;
 const regexH2Content = /(?<=##\s)[\s\S]*/;
 const regexP = /.*/;
 const regexEmpty = /./;
+const regexLink = /[[\s\S]*]([\s\S]*)/;
+const linkMatch = /\(([^\)]+)\)/;
+const linkTextMatch = /\[([^\)]+)\]/;
 
 fs.readFile("./test.md", "utf8", (err, data) => {
   if (err) {
@@ -20,6 +23,8 @@ fs.readFile("./test.md", "utf8", (err, data) => {
   }
   const splitDataArray = data.split("\n");
   let html = "";
+
+  console.log(splitDataArray[0].match(linkTextMatch));
 
   for (let i = 0; i < splitDataArray.length; i++) {
     if (splitDataArray[i].match(regexH2)) {
@@ -30,6 +35,10 @@ fs.readFile("./test.md", "utf8", (err, data) => {
       html = html + `<h1>${h1Content}</h1>\n`;
     } else if (splitDataArray[i].match(regexEmpty) === null) {
       continue;
+    } else if (splitDataArray[i].match(regexLink)) {
+      const link = splitDataArray[i].match(linkMatch);
+      const linkText = splitDataArray[i].match(linkTextMatch);
+      html = html + `<a href="${link[1]}">${linkText[1]}</a>\n`;
     } else if (splitDataArray[i].match(regexP)) {
       html = html + `<p>${splitDataArray[i]}</p>\n`;
     }

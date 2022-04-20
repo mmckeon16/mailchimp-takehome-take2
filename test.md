@@ -2,4 +2,10 @@
 
 Markdown is a simple syntax used to generate formatted text. It’s used in lots of places, but the one most developers have probably encountered is README files in github.
 
+For this exercise, we’d like you to write a program which converts a small subset of markdown to HTML. You can implement this as a command-line program or as a web application, whatever you’re more comfortable with.
+
 ## Formatting Specifics
+
+[test](match.com)
+
+More test info
